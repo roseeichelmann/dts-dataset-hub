@@ -1,11 +1,10 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-// import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import NavTile from "../components/NavTile";
-// import PageHead from "../components/PageHead";
+import { useSocrata } from "../utils/socrata";
+import { DATASETS_QUERY } from "../utils/queries";
 
 const DESCRIPTION =
   "Datasets published and maintained by the Transportation and Public Works Department's Data and Technology Services Division.";
