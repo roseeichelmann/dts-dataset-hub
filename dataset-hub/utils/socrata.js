@@ -12,7 +12,7 @@ const buildQuery = (args) => {
 };
 
 const buildUrl = ({ resourceId, format, query }) => {
-  let url = `https://data.austintexas.gov/resource/${resourceId}.${format}`;
+  let url = `https://data.austintexas.gov/resource/28ys-ieqv.json?$where=cover_image_url%20is%20not%20null`;
   url = query ? `${url}?${query}` : url;
   return url;
 };

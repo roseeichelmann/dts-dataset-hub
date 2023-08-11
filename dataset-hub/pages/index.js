@@ -10,6 +10,10 @@ const DESCRIPTION =
   "Datasets published and maintained by the Transportation and Public Works Department's Data and Technology Services Division.";
 
 export default function Home() {
+  const { data: datasets, error } = useSocrata({ DATASETS_QUERY });
+
+  console.log(datasets);
+
   return (
     <div className="wrapper">
       <Nav isHome>
@@ -26,19 +30,20 @@ export default function Home() {
             <p className="text-muted">{DESCRIPTION}</p>
           </Col>
         </Row>
-        {/* <Row className="text-dts-4 mb-4">
-            {PAGES.map((page) => (
+        <Row className="text-dts-4 mb-4">
+          {datasets &&
+            datasets.map((dataset) => (
               <Col
-                key={page.href}
+                key={dataset.dataset_url}
                 xs={12}
                 md={4}
                 lg={3}
                 className="p-2 p-md-3 p-xl-4"
               >
-                <NavTile {...page} />
+                <NavTile {...dataset} />
               </Col>
             ))}
-          </Row> */}
+        </Row>
       </Container>
       {/* <Footer /> */}
     </div>

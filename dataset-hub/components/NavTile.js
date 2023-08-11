@@ -14,7 +14,15 @@ const ExternalLinkTitle = ({ title }) => (
   </div>
 );
 
-export default function NavTile({ href, title, description, img, external }) {
+export default function NavTile({
+  dataset_url,
+  name,
+  description,
+  cover_image_url,
+  external,
+}) {
+  console.log(cover_image_url);
+
   const anchorProps = external
     ? {
         target: "_blank",
@@ -23,20 +31,22 @@ export default function NavTile({ href, title, description, img, external }) {
     : {};
   return (
     <>
-      <Link className="text-decoration-none" href={href} passHref>
-        <a className="text-decoration-none" {...anchorProps}>
+      <Link className="text-decoration-none" href={dataset_url} passHref>
+        <div className="text-decoration-none" {...anchorProps}>
           <Card className="h-100 nav-tile">
-            {img && <Card.Img variant="top" alt={img.alt} src={img.src} />}
+            {cover_image_url && (
+              <Card.Img variant="top" src={cover_image_url.url} />
+            )}
             <Card.Body className="p-3 lh-1">
               <Card.Title className="fw-bold fs-6 text-primary">
-                {external ? <ExternalLinkTitle title={title} /> : title}
+                {external ? <ExternalLinkTitle title={name} /> : name}
               </Card.Title>
               <span className="text-muted ">
                 <small>{description}</small>
               </span>
             </Card.Body>
           </Card>
-        </a>
+        </div>
       </Link>
     </>
   );
